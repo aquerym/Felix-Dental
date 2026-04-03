@@ -14,7 +14,7 @@ export default function App() {
   }, [i18n.language]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Felix-Dental">
       <Routes>
         <Route path="/he" element={<HePage />} />
         <Route path="/en" element={<EnPage />} />
