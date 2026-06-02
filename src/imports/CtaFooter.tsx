@@ -43,9 +43,11 @@ function Frame20() {
 }
 
 function Frame17() {
+  const { t } = useTranslation();
+  const layout = useLayout();
   return (
     <div className="bg-white content-stretch flex gap-[10px] h-full items-center justify-center overflow-clip px-[30px] py-[10px] relative rounded-[35px] shrink-0">
-      <p className="font-['Rubik',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#5f80c9] text-[16px] text-right" dir="rtl">הפעל דמו</p>
+      <p className={`font-['Rubik',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#5f80c9] text-[16px] ${layout.textAlign}`} dir={layout.dir}>{t("hero.demo")}</p>
       <div className="flex items-center justify-center relative shrink-0">
         <div className="-scale-y-100 flex-none">
           <Frame20 />
@@ -68,9 +70,11 @@ function BasilArrowUpOutline() {
 }
 
 function Frame18() {
+  const { t } = useTranslation();
+  const layout = useLayout();
   return (
     <div className="content-stretch flex gap-[5px] items-center justify-center overflow-clip px-[30px] py-[13px] relative rounded-[35px] shrink-0" style={{ backgroundColor: "#7097E2" }}>
-      <p className="font-['Rubik',sans-serif] font-medium leading-[normal] relative shrink-0 text-[16px] text-right text-white" dir="rtl">קבל ייעוץ</p>
+      <p className={`font-['Rubik',sans-serif] font-medium leading-[normal] relative shrink-0 text-[16px] ${layout.textAlign} text-white`} dir={layout.dir}>{t("hero.cta")}</p>
       <BasilArrowUpOutline />
     </div>
   );

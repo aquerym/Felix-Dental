@@ -9,10 +9,19 @@ import { useLayout } from "@/layouts";
 
 function Frame8() {
   const { t } = useTranslation();
+  const layout = useLayout();
+  const channelKeys = ["integrations.channel.whatsapp", "integrations.channel.instagram", "integrations.channel.facebook"] as const;
   return (
     <div className="content-stretch flex flex-col gap-[10px] md:gap-[20px] items-center md:items-start justify-start leading-[normal] relative shrink md:shrink-0 text-[#4f5e7b] w-full">
       <p className="font-['Rubik',sans-serif] font-semibold relative shrink md:shrink-0 text-[28px] md:text-[48px] text-center md:text-start w-full md:w-[596px]">{t("integrations.title")}</p>
       <p className="font-['Rubik',sans-serif] font-normal relative shrink md:shrink-0 text-[14px] md:text-[18px] w-full md:w-[607px] whitespace-pre-wrap text-center md:text-start">{t("integrations.subtitle")}</p>
+      <div className={`content-stretch flex flex-col gap-[12px] relative w-full md:w-[607px] ${layout.textAlign}`} dir={layout.dir}>
+        {channelKeys.map((key) => (
+          <p key={key} className="font-['Rubik',sans-serif] font-medium leading-[22px] relative text-[#4f5e7b] text-[14px] md:text-[16px]">{t(key)}</p>
+        ))}
+        <p className="font-['Rubik',sans-serif] font-semibold leading-[22px] relative text-[#5980cc] text-[14px] md:text-[16px] pt-[8px]">{t("integrations.optima")}</p>
+        <p className="font-['Rubik',sans-serif] font-normal leading-[22px] relative text-[#7c96c7] text-[14px] md:text-[16px]">{t("integrations.extras")}</p>
+      </div>
     </div>
   );
 }
@@ -29,10 +38,10 @@ function Frame9() {
 
 function Frame() {
   return (
-    <div className="col-1 mt-[0.38px] pointer-events-none relative rounded-[80px] row-1 size-[50px]">
+    <div className="col-1 mt-[0.38px] pointer-events-none relative rounded-[80px] row-1 size-[50px]" title="WhatsApp">
       <div aria-hidden="true" className="absolute inset-0 rounded-[80px]">
         <div className="absolute bg-white inset-0 rounded-[80px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275620} />
+        <img alt="WhatsApp" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275620} />
       </div>
       <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 rounded-[80px]" />
     </div>
@@ -41,10 +50,10 @@ function Frame() {
 
 function Frame1() {
   return (
-    <div className="col-1 mt-[0.13px] pointer-events-none relative rounded-[80px] row-1 size-[50px]">
+    <div className="col-1 mt-[0.13px] pointer-events-none relative rounded-[80px] row-1 size-[50px]" title="Instagram">
       <div aria-hidden="true" className="absolute inset-0 rounded-[80px]">
         <div className="absolute bg-white inset-0 rounded-[80px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275621} />
+        <img alt="Instagram" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275621} />
       </div>
       <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 rounded-[80px]" />
     </div>
@@ -53,10 +62,10 @@ function Frame1() {
 
 function Frame2() {
   return (
-    <div className="col-1 mt-0 pointer-events-none relative rounded-[80px] row-1 size-[50px]">
+    <div className="col-1 mt-0 pointer-events-none relative rounded-[80px] row-1 size-[50px]" title="Facebook">
       <div aria-hidden="true" className="absolute inset-0 rounded-[80px]">
         <div className="absolute bg-white inset-0 rounded-[80px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275622} />
+        <img alt="Facebook" className="absolute max-w-none object-cover rounded-[80px] size-full" src={imgFrame1171275622} />
       </div>
       <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 rounded-[80px]" />
     </div>
@@ -65,7 +74,7 @@ function Frame2() {
 
 function Frame3() {
   return (
-    <div className="col-1 mt-[0.88px] relative row-1 size-[50px]">
+    <div className="col-1 mt-[0.88px] relative row-1 size-[50px]" title="Optima">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 50 50">
         <g id="Frame 1171275623">
           <rect fill="url(#paint0_linear_9_599)" height="48" rx="24" width="48" x="1" y="1" />
@@ -83,7 +92,6 @@ function Frame3() {
   );
 }
 
-// Контейнер фреймов с отрицательным отступом для наложения друг на друга
 function Group() {
   return (
     <div className="flex flex-row items-end justify-start gap-0 leading-[0] relative shrink-0 w-fit">

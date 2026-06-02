@@ -1,8 +1,7 @@
 import Desktop from "@/imports/Desktop5";
 import KeyAdvantages from "@/imports/KeyAdvantages";
 import ValueForBusiness from "@/app/components/ValueForBusiness";
-import Troubleshooting from "@/imports/Troubleshooting";
-import WorkflowMetrics from "@/imports/WorkflowMetrics";
+import { WaitingListFeature } from "@/app/components/WaitingListFeature";
 import IntegrationsWhyUs from "@/imports/IntegrationsWhyUs";
 import CtaFooter from "@/imports/CtaFooter";
 import { ScaledContainer } from "@/app/components/ScaledContainer";
@@ -15,8 +14,7 @@ export function LandingContent() {
         <Desktop />
         <KeyAdvantages />
         <ValueForBusiness />
-        <Troubleshooting />
-        <WorkflowMetrics />
+        <WaitingListFeature />
         <IntegrationsWhyUs />
         <CtaFooter />
       </div>
