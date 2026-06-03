@@ -5,6 +5,8 @@ import imgFrame1171275780 from "../assets/d11c116f13bb5f74e52d85017aca6c4c884e15
 import { useTranslation } from "react-i18next";
 import { useLayout } from "@/layouts";
 
+const METRIC_CARD_GRADIENT = "linear-gradient(77.9981deg, rgb(246, 249, 255) 5.0424%, rgb(232, 241, 255) 112.25%)";
+
 function Frame() {
   const { t } = useTranslation();
   return (
@@ -22,7 +24,7 @@ function Frame9() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start justify-start leading-[normal] relative shrink-0 w-full">
       <p className={`font-['Rubik',sans-serif] font-semibold relative shrink-0 text-[#5980cc] text-[18px] md:text-[24px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric1.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-normal relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric1.desc")}</p>
+      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric1.desc")}</p>
     </div>
   );
 }
@@ -52,14 +54,14 @@ function Frame8() {
 
 function Metrica() {
   return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: "linear-gradient(77.9981deg, rgb(255, 255, 255) 5.0424%, rgba(244, 244, 244, 0.5) 112.25%)" }}>
+    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
       <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
         <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
           <Frame9 />
           <Frame8 />
         </div>
       </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
+      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
     </div>
   );
 }
@@ -83,7 +85,7 @@ function Frame10() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start justify-between leading-[normal] relative shrink-0 w-full">
       <p className={`font-['Rubik',sans-serif] font-semibold relative shrink-0 text-[#5980cc] text-[20px] md:text-[24px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric2.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-light relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric2.desc")}</p>
+      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric2.desc")}</p>
     </div>
   );
 }
@@ -118,14 +120,14 @@ function Frame11() {
 
 function Metrica1() {
   return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: "linear-gradient(77.9981deg, rgb(255, 255, 255) 5.0424%, rgba(244, 244, 244, 0.5) 112.25%)" }}>
+    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
       <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
         <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
           <Frame10 />
           <Frame11 />
         </div>
       </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
+      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
     </div>
   );
 }
@@ -159,7 +161,7 @@ function Frame12() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start justify-start leading-[normal] relative shrink-0 w-full whitespace-pre-wrap">
       <p className={`font-['Rubik',sans-serif] font-semibold min-w-full relative shrink-0 text-[#5980cc] text-[20px] md:text-[24px] w-[min-content] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric3.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-light relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric3.desc")}</p>
+      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric3.desc")}</p>
     </div>
   );
 }
@@ -189,14 +191,14 @@ function Frame13() {
 
 function Metrica2() {
   return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: "linear-gradient(77.9981deg, rgb(255, 255, 255) 5.0424%, rgba(244, 244, 244, 0.5) 112.25%)" }}>
+    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
       <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
         <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
           <Frame12 />
           <Frame13 />
         </div>
       </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-white inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
+      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
     </div>
   );
 }
@@ -211,7 +213,7 @@ function Frame14() {
           <img alt="" className="absolute h-full left-[-1.46%] max-w-none top-0 w-[102.91%]" src={imgFrame1171275780} />
         </div>
       </div>
-      <p className="absolute font-['Rubik',sans-serif] font-bold leading-[normal] text-[18px] md:text-[24px] text-right text-white bottom-[20px] md:top-[214px] right-[20px] md:right-[30px] md:-translate-x-full md:left-[412px] w-[150px] md:w-[129px] whitespace-pre-wrap" dir="rtl">{t("workflow.photo3")}</p>
+      <p className="absolute font-['Rubik',sans-serif] font-bold leading-[normal] text-[18px] md:text-[24px] text-right text-white bottom-[20px] right-[20px] md:right-[30px] md:-translate-x-full w-[150px] md:w-[160px] whitespace-pre-wrap" dir="rtl">{t("workflow.photo3")}</p>
     </div>
   );
 }

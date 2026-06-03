@@ -139,7 +139,7 @@ function Frame3() {
   return (
     <div className={`content-stretch flex flex-col gap-[20px] relative shrink-0 ${"logoColumnItems" in layout.footer ? layout.footer.logoColumnItems : layout.itemsAlign}`}>
       <Frame />
-      <p className={`font-['Rubik',sans-serif] font-normal leading-[25px] relative shrink-0 text-[#4f5e7b] text-[16px] whitespace-pre-wrap ${layout.textAlign} ${layout.footer.descWidth}`}>{t("footer.description")}</p>
+      <p className={`font-['Rubik',sans-serif] font-medium leading-[25px] relative shrink-0 text-[#4f5e7b] text-[16px] whitespace-pre-wrap ${layout.textAlign} ${layout.footer.descWidth}`}>{t("footer.description")}</p>
     </div>
   );
 }
@@ -196,7 +196,7 @@ function Frame8() {
 
 function Frame6() {
   return (
-    <div className="content-stretch hidden md:flex gap-[100px] items-start leading-[normal] relative self-stretch shrink-0 text-[#4f5e7b]">
+    <div className="content-stretch hidden gap-[100px] items-start leading-[normal] relative self-stretch shrink-0 text-[#4f5e7b]">
       <Frame4 />
       <Frame5 />
       <Frame8 />

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLayout } from "@/layouts";
 import { ContactPopup } from "../app/components/ContactPopup";
+import { showTroubleshootingCasesBanner } from "@/app/landingConfig";
 import { motion, AnimatePresence } from "motion/react";
 
 // Slide data with translation keys
@@ -414,7 +415,7 @@ function Frame11({ activeSlide, onSlideChange }: { activeSlide: number; onSlideC
   return (
     <div className="content-stretch flex flex-col gap-[40px] md:gap-[70px] h-auto md:h-full items-center justify-center overflow-clip relative md:flex-[1_0_0] md:min-h-px md:min-w-px w-full">
       <Frame12 activeSlide={activeSlide} onSlideChange={onSlideChange} />
-      <Frame29 />
+      {showTroubleshootingCasesBanner ? <Frame29 /> : null}
     </div>
   );
 }
