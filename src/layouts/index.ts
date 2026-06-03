@@ -14,3 +14,8 @@ export function useLayout(): Layout {
     : "en";
   return layouts[lang];
 }
+
+/** Body/UI font class for the active locale (Montserrat for RU, Rubik otherwise). */
+export function useFontClass(): string {
+  return useLayout().fontSans;
+}

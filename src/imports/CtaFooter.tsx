@@ -309,10 +309,8 @@ function Frame11() {
 function Frame15() {
   return (
     <div className="content-stretch flex font-['Albert_Sans:Regular',sans-serif] font-normal gap-[100px] items-center justify-end relative shrink-0 text-[#4f5e7b] text-[16px]">
-      <a className="block leading-[0] relative shrink-0 whitespace-nowrap" href="mailto:felixlabs@gmail.com">
-        <p className="cursor-pointer leading-[25px]">felixlabs@gmail.com</p>
-      </a>
-      <p className="leading-[25px] relative shrink-0">+972 50 12 123 123</p>
+      <a className="leading-[25px] relative shrink-0 whitespace-nowrap cursor-pointer hover:underline" href="mailto:felixlabs@gmail.com">felixlabs@gmail.com</a>
+      <a className="leading-[25px] relative shrink-0 whitespace-nowrap cursor-pointer hover:underline" href="tel:+972501231234">+972 50-123-1234</a>
     </div>
   );
 }
@@ -358,7 +356,7 @@ function Desktop() {
 
 export default function CtaFooter() {
   return (
-    <div className="content-stretch flex flex-col gap-[40px] md:gap-[90px] items-start p-[20px] md:p-[50px] relative size-full bg-[#e6efff]" data-name="CTA + Footer">
+    <div className="content-stretch flex flex-col gap-[40px] md:gap-[90px] items-start p-[20px] md:p-[50px] relative size-full bg-white" data-name="CTA + Footer">
       <Frame21 />
       <Desktop />
     </div>

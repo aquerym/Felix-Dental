@@ -535,7 +535,7 @@ export default function KeyAdvantages() {
   const [isContactPopupOpen, setContactPopupOpen] = useState(false);
 
   return (
-    <div className="bg-[rgb(230,239,255)] content-stretch flex flex-col gap-[15px] items-center justify-center md:justify-start px-[20px] md:px-[50px] py-[50px] md:py-[100px] relative size-full min-h-screen md:min-h-0" data-name="Key Advantages">
+    <div id="key-advantages" className="bg-[rgb(230,239,255)] content-stretch flex flex-col gap-[15px] items-center justify-center md:justify-start px-[20px] md:px-[50px] py-[50px] md:py-[100px] relative size-full min-h-screen md:min-h-0 scroll-mt-[120px]" data-name="Key Advantages">
       <Frame29 onOpenPopup={() => setContactPopupOpen(true)} />
       <ContactPopup isOpen={isContactPopupOpen} onClose={() => setContactPopupOpen(false)} />
     </div>

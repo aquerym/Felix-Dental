@@ -423,7 +423,7 @@ export default function Troubleshooting() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <div className="bg-[rgb(230,239,255)] content-stretch flex items-start px-[20px] md:px-[50px] py-[15px] md:py-[25px] relative size-full" data-name="Troubleshooting">
+    <div id="pricing" className="bg-white content-stretch flex items-start px-[20px] md:px-[50px] py-[15px] md:py-[25px] relative size-full scroll-mt-[120px]" data-name="Troubleshooting">
       <Frame11 activeSlide={activeSlide} onSlideChange={setActiveSlide} />
     </div>
   );

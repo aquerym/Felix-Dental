@@ -31,7 +31,7 @@ export default function Frame() {
   const layout = useLayout();
   return (
     <div className={`bg-white content-stretch flex gap-[10px] items-center justify-center overflow-clip px-[20px] md:px-[30px] py-[10px] relative rounded-[35px] w-auto shrink-0 transition-all duration-200 hover:shadow-lg hover:scale-105 cursor-pointer ${layout.buttons.demoMinW}`}>
-      <p className={`font-['Rubik',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#5f80c9] ${layout.buttons.fontSize} ${layout.textAlign}`}>
+      <p className={`font-['Rubik',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#5f80c9] ${layout.buttons.fontSize} ${layout.textAlign}`}>
         {t("hero.demo")}
       </p>
       <div className="flex items-center justify-center relative shrink-0">

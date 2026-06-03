@@ -14,6 +14,30 @@ import imgHeroBackgroundDesktopRu from "../assets/hero-bg-ru-desktop.png";
 import imgHeroBackgroundMobileRu from "../assets/hero-bg-ru-mobile.png"; // updated
 import imgHeroBackgroundMobileEn from "../assets/hero-bg-en-mobile.png";
 import Vector from "./Vector";
+import { showKeyAdvantagesSection, showTroubleshootingSection } from "@/app/landingConfig";
+
+const SECTION_IDS = {
+  about: "key-advantages",
+  useCases: "use-cases",
+  pricing: "pricing",
+  integrations: "integrations",
+} as const;
+
+function scrollToSection(sectionId: string) {
+  document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function NavLink({ sectionId, className, onAfterClick, children }: { sectionId: string; className: string; onAfterClick?: () => void; children: React.ReactNode }) {
+  const handleActivate = () => {
+    scrollToSection(sectionId);
+    onAfterClick?.();
+  };
+  return (
+    <p role="button" tabIndex={0} onClick={handleActivate} onKeyDown={(e) => e.key === "Enter" && handleActivate()} className={className}>
+      {children}
+    </p>
+  );
+}
 
 function Frame() {
   const layout = useLayout();
@@ -27,12 +51,13 @@ function Frame() {
 
 function Frame1() {
   const { t } = useTranslation();
+  const navClass = "relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-[#0514c0]";
   return (
     <div className="content-stretch hidden md:flex font-['Rubik'] font-light gap-[70px] items-center leading-[normal] relative shrink-0 text-[#5f80c9] text-[16px]">
-      <p className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-[#0514c0]">{t("nav.about")}</p>
-      <p className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-[#0514c0]">{t("nav.useCases")}</p>
-      <p className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-[#0514c0]">{t("nav.pricing")}</p>
-      <p className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-[#0514c0]">{t("nav.integrations")}</p>
+      {showKeyAdvantagesSection ? <NavLink sectionId={SECTION_IDS.about} className={navClass}>{t("nav.about")}</NavLink> : null}
+      <NavLink sectionId={SECTION_IDS.useCases} className={navClass}>{t("nav.useCases")}</NavLink>
+      {showTroubleshootingSection ? <NavLink sectionId={SECTION_IDS.pricing} className={navClass}>{t("nav.pricing")}</NavLink> : null}
+      <NavLink sectionId={SECTION_IDS.integrations} className={navClass}>{t("nav.integrations")}</NavLink>
     </div>
   );
 }
@@ -152,10 +177,10 @@ function ChildContent() {
               </div>
               {/* Menu Items */}
               <div className="flex flex-col gap-6 p-6 font-['Rubik',sans-serif] font-medium text-[#5f80c9] text-[16px]">
-                <p className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.about")}</p>
-                <p className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.useCases")}</p>
-                <p className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.pricing")}</p>
-                <p className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.integrations")}</p>
+                {showKeyAdvantagesSection ? <NavLink sectionId={SECTION_IDS.about} onAfterClick={() => setIsMenuOpen(false)} className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.about")}</NavLink> : null}
+                <NavLink sectionId={SECTION_IDS.useCases} onAfterClick={() => setIsMenuOpen(false)} className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.useCases")}</NavLink>
+                {showTroubleshootingSection ? <NavLink sectionId={SECTION_IDS.pricing} onAfterClick={() => setIsMenuOpen(false)} className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.pricing")}</NavLink> : null}
+                <NavLink sectionId={SECTION_IDS.integrations} onAfterClick={() => setIsMenuOpen(false)} className="cursor-pointer transition-colors duration-200 hover:text-[#0514c0] text-start">{t("nav.integrations")}</NavLink>
               </div>
               <div className="mt-auto p-6 border-t border-gray-200 flex flex-col gap-4">
                 <Frame2 />
@@ -199,7 +224,7 @@ function Frame11() {
   return (
     <div className={`content-stretch flex flex-col font-['Rubik',sans-serif] font-medium ${layout.hero.heroTextGap} leading-[normal] relative shrink-0 text-white w-full px-[20px] md:px-0 justify-center ${layout.hero.itemsAlign} ${layout.hero.containerWidth}`}>
       <p className={`${layout.hero.titleWidth ?? "min-w-full"} relative shrink-0 text-[40px] md:text-[64px] w-[min-content] whitespace-pre-wrap font-[Rubik] text-right`}>{t("hero.title")}</p>
-      <p className={`max-w-full relative shrink-0 text-[15px] md:text-[18px] font-[Rubik] font-light text-right ${layout.hero.subtitleMaxW}`}>{t("hero.subtitle")}</p>
+      <p className={`max-w-full relative shrink-0 text-[15px] md:text-[18px] font-[Rubik] font-medium text-right ${layout.hero.subtitleMaxW}`}>{t("hero.subtitle")}</p>
     </div>
   );
 }
@@ -253,9 +278,9 @@ function Frame12() {
 function Frame6() {
   const layout = useLayout();
   return (
-    <div className="flex-[1_0_0] min-h-px min-w-px relative w-full">
-      <div className={`flex flex-col ${layout.hero.itemsAlign} justify-center size-full`}>
-        <div className={`content-stretch flex flex-col ${layout.hero.itemsAlign} justify-center pb-[-30px] md:pb-[150px] pl-[20px] md:pl-[150px] pr-[20px] md:pr-[100px] pt-[-30px] md:pt-[100px] relative size-full`}>
+    <div className="relative z-10 flex min-h-0 flex-1 w-full overflow-visible">
+      <div className={`flex w-full flex-1 flex-col ${layout.hero.itemsAlign} justify-center overflow-visible`}>
+        <div className={`flex w-full flex-1 flex-col ${layout.hero.itemsAlign} justify-center overflow-visible px-[20px] pt-[20px] pb-[30px] md:px-[100px] md:pb-[150px] md:pl-[150px] md:pt-[100px] relative`}>
           <Frame12 />
         </div>
       </div>
@@ -269,21 +294,17 @@ function Frame5() {
   const desktopBg = i18n.language === "en" ? imgHeroBackgroundDesktopEn : i18n.language === "ru" ? imgHeroBackgroundDesktopRu : imgHeroBackgroundDesktop;
   const mobileBg = i18n.language === "en" ? imgHeroBackgroundMobileEn : i18n.language === "ru" ? imgHeroBackgroundMobileRu : imgHeroBackground;
   return (
-    <div className="content-stretch flex flex-col gap-[20px] h-[98vh] items-start relative rounded-[30px] md:rounded-[50px] shrink-0 w-full">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] md:rounded-[50px]">
-        {/* Mobile background */}
-        <img
-          alt="Hero background mobile"
-          className="md:hidden absolute left-0 top-0 w-full h-full object-cover"
-          src={mobileBg}
-        />
-        {/* Desktop background */}
-        <img
-          alt="Hero background desktop"
-          className="hidden md:block absolute left-0 top-0 w-full h-full object-cover"
-          src={desktopBg}
-        />
-      </div>
+    <div className="relative isolate flex min-h-[98vh] w-full max-w-none flex-col gap-[20px] overflow-visible">
+      <img
+        alt="Hero background mobile"
+        className="absolute inset-0 -z-10 size-full object-cover object-center md:hidden rounded-[20px]"
+        src={mobileBg}
+      />
+      <img
+        alt="Hero background desktop"
+        className="absolute inset-0 -z-10 hidden size-full object-cover object-center md:block rounded-[20px] md:rounded-[32px] lg:rounded-[28px]"
+        src={desktopBg}
+      />
       <Navigation />
       <Frame6 />
     </div>
@@ -292,10 +313,7 @@ function Frame5() {
 
 export default function Desktop() {
   return (
-    <div
-      className="bg-[rgb(230,239,255)] content-stretch flex flex-col items-start px-[10px] py-[10px] relative size-full"
-      data-name="Desktop - 5"
-    >
+    <div className="relative w-full overflow-visible bg-white px-[10px] pt-[10px] md:px-0 md:pt-[10px]" data-name="Desktop - 5">
       <Frame5 />
     </div>
   );

@@ -1,5 +1,6 @@
 /** English layout config — isolated from he/ru. Edit here for EN-only changes. */
 export const enLayout = {
+  fontSans: "font-['Rubik',sans-serif]" as const,
   dir: "ltr" as const,
   textAlign: "text-left",
   itemsAlign: "items-start",

@@ -1,6 +1,7 @@
 import Desktop from "@/imports/Desktop5";
-import KeyAdvantages from "@/imports/KeyAdvantages";
+import KeyAdvantagesBento from "@/app/components/KeyAdvantagesBento";
 import ValueForBusiness from "@/app/components/ValueForBusiness";
+import { showKeyAdvantagesSection, showTroubleshootingSection } from "@/app/landingConfig";
 import Troubleshooting from "@/imports/Troubleshooting";
 import WorkflowMetrics from "@/imports/WorkflowMetrics";
 import IntegrationsWhyUs from "@/imports/IntegrationsWhyUs";
@@ -11,11 +12,11 @@ import { ScaledContainer } from "@/app/components/ScaledContainer";
 export function LandingContent() {
   return (
     <ScaledContainer>
-      <div className="min-h-screen bg-gradient-to-b from-[#e6efff] to-white">
+      <div className="min-h-screen overflow-visible bg-gradient-to-b from-[#e6efff] to-white">
         <Desktop />
-        <KeyAdvantages />
+        {showKeyAdvantagesSection ? <KeyAdvantagesBento /> : null}
         <ValueForBusiness />
-        <Troubleshooting />
+        {showTroubleshootingSection ? <Troubleshooting /> : null}
         <WorkflowMetrics />
         <IntegrationsWhyUs />
         <CtaFooter />

@@ -139,6 +139,16 @@
     font-family: 'Rubik', sans-serif;
   }
 
+  html[lang="ru"],
+  html[lang="ru"] body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Override explicit Rubik utility classes when Russian is active */
+  html[lang="ru"] [class*="Rubik"] {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+
   h1 {
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-medium);

@@ -237,7 +237,7 @@ function Frame7() {
 
 export default function WorkflowMetrics() {
   return (
-    <div className="bg-[#e6efff] content-stretch flex flex-col gap-[50px] md:gap-[100px] items-start px-[50px] py-[100px] relative size-full" data-name="Workflow + metrics">
+    <div className="bg-white content-stretch flex flex-col gap-[50px] md:gap-[100px] items-start px-[50px] py-[100px] relative size-full" data-name="Workflow + metrics">
       <Frame />
       <Frame7 />
     </div>

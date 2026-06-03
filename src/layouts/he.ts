@@ -1,5 +1,6 @@
 /** Hebrew layout config — isolated from en/ru. Edit here for HE-only changes. */
 export const heLayout = {
+  fontSans: "font-['Rubik',sans-serif]" as const,
   dir: "rtl" as const,
   textAlign: "text-right",
   itemsAlign: "items-end",

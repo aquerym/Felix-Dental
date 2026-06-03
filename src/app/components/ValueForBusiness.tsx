@@ -230,7 +230,7 @@ function Frame() {
 
 export default function ValueForBusiness() {
   return (
-    <div className="bg-[rgb(230,239,255)] content-stretch flex items-center px-[20px] md:px-[50px] py-[15px] md:py-[25px] relative size-full" data-name="ValueForBusiness">
+    <div id="use-cases" className="bg-white content-stretch flex items-center px-[20px] md:px-[50px] py-[15px] md:py-[25px] relative size-full scroll-mt-[120px]" data-name="ValueForBusiness">
       <Frame />
     </div>
   );
