@@ -1,247 +1,175 @@
-import svgPaths from "./svg-rjqvmd6t5l";
-import imgFrame1171275779 from "../assets/15c12b64f8ae214d3dbfd1a4ad28f0c3ee6817da.png";
-import imgFrame1171275778 from "../assets/8cd2b4b5ffea4585e0f8d9a7a946f2e66db544a2.png";
-import imgFrame1171275780 from "../assets/d11c116f13bb5f74e52d85017aca6c4c884e1519.png";
+import { useState, useEffect } from "react";
+import imgSlide1 from "../assets/15c12b64f8ae214d3dbfd1a4ad28f0c3ee6817da.png";
+import imgSlide2 from "../assets/8cd2b4b5ffea4585e0f8d9a7a946f2e66db544a2.png";
+import imgDentalModel from "../assets/workflow-dental-model.png";
+import imgFeaturedCard from "../assets/workflow-medical-tablet.png";
+import imgAvatar1 from "../assets/e988e6ef720aa675113d122b1059a42df6b88463.png";
+import imgAvatar2 from "../assets/7357ce90f95eb8fe8b265017caf3a6deecadc7b6.png";
+import imgAvatar3 from "../assets/72b8dc871231ac78f17cd908872fabb84c9a937a.png";
+import { Clock, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLayout } from "@/layouts";
 
-const METRIC_CARD_GRADIENT = "linear-gradient(77.9981deg, rgb(246, 249, 255) 5.0424%, rgb(232, 241, 255) 112.25%)";
+const BADGE_GRADIENT = "linear-gradient(117.66deg, rgba(137, 191, 253, 0.64) 10.73%, rgba(78, 133, 221, 0.554) 70.44%, rgba(42, 97, 201, 0.5) 108.23%)";
+const STEP_CARD_HOVER = "group relative cursor-pointer border border-solid border-transparent transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:border-[#e8edf5] hover:shadow-[2px_8px_14px_0px_rgba(168,168,168,0.2)]";
+const SLIDE_INTERVAL_MS = 4000;
 
-function Frame() {
-  const { t } = useTranslation();
+const STATS = [
+  { statKey: "workflow.metric1.stat", labelKey: "workflow.metric1.title" },
+  { statKey: "workflow.metric2.stat", labelKey: "workflow.metric2.title" },
+  { statKey: "workflow.metric3.stat", labelKey: "workflow.metric3.title" },
+] as const;
+
+const SLIDES = [
+  { image: imgSlide1, photoKey: "workflow.photo1" },
+  { image: imgSlide2, photoKey: "workflow.photo2" },
+  { image: imgDentalModel, photoKey: "workflow.photo3", imageClass: "object-[center_20%]" },
+] as const;
+
+const STEP_ICONS = [Clock, Users] as const;
+
+function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="content-stretch flex flex-col gap-[20px] md:gap-0 items-center justify-between relative shrink-0 w-full">
-      <div className="font-['Rubik',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#4f5e7b] text-[28px] md:text-[48px] text-center md:text-start w-full md:w-fit whitespace-pre-wrap flex flex-col gap-[15px] items-center justify-start">
-        <p>{t("workflow.title")}</p>
-      </div>
+    <div className="flex h-fit items-center justify-center overflow-clip rounded-[170px] px-[12px] py-[7px] shrink-0 w-fit" style={{ backgroundImage: BADGE_GRADIENT }}>
+      <span className="font-['Rubik',sans-serif] text-[14px] font-semibold leading-normal text-white whitespace-nowrap md:text-[16px]">{children}</span>
     </div>
   );
 }
 
-function Frame9() {
-  const { t } = useTranslation();
-  const layout = useLayout();
-  return (
-    <div className="content-stretch flex flex-col gap-[10px] items-start justify-start leading-[normal] relative shrink-0 w-full">
-      <p className={`font-['Rubik',sans-serif] font-semibold relative shrink-0 text-[#5980cc] text-[18px] md:text-[24px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric1.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric1.desc")}</p>
-    </div>
-  );
-}
-
-function IonStatsChart() {
-  return (
-    <div className="h-[28px] md:h-[49px] relative shrink-0 w-[28px] md:w-[50px]" data-name="ion:stats-chart">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 50 49">
-        <g id="ion:stats-chart">
-          <path d={svgPaths.p2eb63d80} fill="var(--fill-0, #B0CBFB)" fillOpacity="0.88" id="Vector" />
-          <path d={svgPaths.p187d2db0} fill="var(--fill-0, #7097E2)" id="Vector_2" opacity="0.77" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Frame8() {
-  const { t } = useTranslation();
-  return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <p className="font-['Rubik',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#5980cc] text-[28px] md:text-[48px] text-right">{t("workflow.metric1.stat")}</p>
-      <IonStatsChart />
-    </div>
-  );
-}
-
-function Metrica() {
-  return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
-      <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
-        <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
-          <Frame9 />
-          <Frame8 />
-        </div>
-      </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
-    </div>
-  );
-}
-
-function Frame4() {
-  const { t } = useTranslation();
-  return (
-    <div className="h-auto min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full">
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[30px]">
-        <div className="absolute bg-[#ddd] inset-0 rounded-[30px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[30px] size-full" src={imgFrame1171275779} />
-      </div>
-      <p className="absolute font-['Rubik',sans-serif] font-bold leading-[normal] text-[18px] md:text-[24px] text-right text-white bottom-[20px] md:top-[217px] right-[20px] md:right-[30px] w-[150px] md:w-[175px] whitespace-pre-wrap" dir="rtl">{t("workflow.photo1")}</p>
-    </div>
-  );
-}
-
-function Frame10() {
+function StatItem({ statKey, labelKey }: { statKey: string; labelKey: string }) {
   const { t } = useTranslation();
   const layout = useLayout();
   return (
-    <div className="content-stretch flex flex-col gap-[10px] items-start justify-between leading-[normal] relative shrink-0 w-full">
-      <p className={`font-['Rubik',sans-serif] font-semibold relative shrink-0 text-[#5980cc] text-[20px] md:text-[24px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric2.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] whitespace-pre-wrap ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric2.desc")}</p>
+    <div className={`flex flex-col gap-[10px] rounded-[24px] bg-white p-[20px] shadow-[2px_4px_12px_0px_rgba(168,168,168,0.12)] ${STEP_CARD_HOVER} ${layout.textAlign}`}>
+      <p className="font-['Rubik',sans-serif] text-[32px] font-semibold leading-none text-[#5980cc] md:text-[44px]">{t(statKey)}</p>
+      <p className="font-['Rubik',sans-serif] text-[14px] font-medium leading-snug text-[#4f5e7b] md:text-[15px]">{t(labelKey)}</p>
     </div>
   );
 }
 
-function StreamlineClassLessonSolid() {
-  return (
-    <div className="relative shrink-0 size-[28px] md:size-[42px]" data-name="streamline:class-lesson-solid">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 42 42">
-        <g clipPath="url(#clip0_9_397)" id="streamline:class-lesson-solid">
-          <path clipRule="evenodd" d={svgPaths.p2dfa5300} fill="var(--fill-0, #B0CBFB)" fillRule="evenodd" id="Vector" />
-          <path clipRule="evenodd" d={svgPaths.pc9ffd80} fill="var(--fill-0, #7097E2)" fillRule="evenodd" id="Vector_2" opacity="0.77" />
-        </g>
-        <defs>
-          <clipPath id="clip0_9_397">
-            <rect fill="white" height="42" width="42" />
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
-function Frame11() {
-  const { t } = useTranslation();
-  return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <StreamlineClassLessonSolid />
-      <p className="font-['Rubik',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#5980cc] text-[28px] md:text-[48px] text-right">{t("workflow.metric2.stat")}</p>
-    </div>
-  );
-}
-
-function Metrica1() {
-  return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
-      <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
-        <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
-          <Frame10 />
-          <Frame11 />
-        </div>
-      </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
-    </div>
-  );
-}
-
-function Frame5() {
-  return (
-    <div className="content-stretch flex flex-col md:flex-row gap-[10px] items-start h-auto md:flex-[1_0_0] md:min-h-px md:min-w-px relative w-full [&>*]:w-full md:[&>*]:w-auto">
-      <Metrica />
-      <Frame4 />
-      <Metrica1 />
-    </div>
-  );
-}
-
-function Frame3() {
-  const { t } = useTranslation();
-  return (
-    <div className="h-auto min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full">
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[30px]">
-        <div className="absolute bg-[#ddd] inset-0 rounded-[30px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[30px] size-full" src={imgFrame1171275778} />
-      </div>
-      <p className="absolute font-['Rubik',sans-serif] font-bold leading-[normal] text-[18px] md:text-[24px] text-right text-white bottom-[20px] md:top-[217px] right-[20px] md:right-[30px] w-[150px] md:w-[175px] whitespace-pre-wrap" dir="rtl">{t("workflow.photo2")}</p>
-    </div>
-  );
-}
-
-function Frame12() {
+function StepCard({ icon: Icon, titleKey, descKey }: { icon: typeof Clock; titleKey: string; descKey: string }) {
   const { t } = useTranslation();
   const layout = useLayout();
   return (
-    <div className="content-stretch flex flex-col gap-[10px] items-start justify-start leading-[normal] relative shrink-0 w-full whitespace-pre-wrap">
-      <p className={`font-['Rubik',sans-serif] font-semibold min-w-full relative shrink-0 text-[#5980cc] text-[20px] md:text-[24px] w-[min-content] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric3.title")}</p>
-      <p className={`font-['Rubik',sans-serif] font-medium relative shrink-0 text-[#7c96c7] text-[14px] md:text-[16px] w-full md:w-[270px] ${layout.textAlign}`} dir={layout.dir}>{t("workflow.metric3.desc")}</p>
+    <div className={`flex flex-col gap-[14px] rounded-[24px] bg-white p-[20px] shadow-[2px_4px_12px_0px_rgba(168,168,168,0.12)] ${STEP_CARD_HOVER} ${layout.textAlign}`}>
+      <div className="flex size-[44px] items-center justify-center rounded-full bg-[#e8f1ff] transition-colors duration-300 group-hover:bg-[#dce8ff]">
+        <Icon className="size-[22px] text-[#5980cc] transition-transform duration-300 group-hover:scale-110" strokeWidth={1.75} />
+      </div>
+      <div className="flex flex-col gap-[8px]">
+        <h4 className="font-['Rubik',sans-serif] text-[16px] font-semibold leading-snug text-[#4f5e7b] transition-colors duration-300 group-hover:text-[#3e5f9a] md:text-[18px]">{t(titleKey)}</h4>
+        <p className="font-['Rubik',sans-serif] text-[13px] font-normal leading-[20px] text-[#7c96c7] md:text-[14px]">{t(descKey)}</p>
+      </div>
     </div>
   );
 }
 
-function TeenyiconsAppointmentsSolid() {
-  return (
-    <div className="relative shrink-0 size-[28px] md:size-[49px]" data-name="teenyicons:appointments-solid">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49 49">
-        <g id="teenyicons:appointments-solid">
-          <path clipRule="evenodd" d={svgPaths.p8e7ed00} fill="var(--fill-0, #B0CBFB)" fillRule="evenodd" id="Vector" />
-          <path clipRule="evenodd" d={svgPaths.p24145f00} fill="var(--fill-0, #7097E2)" fillRule="evenodd" id="Vector_2" opacity="0.77" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Frame13() {
+function WorkflowSlideshow() {
   const { t } = useTranslation();
+  const layout = useLayout();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((index) => (index + 1) % SLIDES.length);
+    }, SLIDE_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, []);
+
+  const activeSlide = SLIDES[activeIndex];
+  const captionSide = layout.dir === "rtl" ? "right-[20px] text-right" : "left-[20px] text-left";
+
   return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <p className="font-['Rubik',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#5980cc] text-[28px] md:text-[48px] text-right">{t("workflow.metric3.stat")}</p>
-      <TeenyiconsAppointmentsSolid />
+    <div className="relative min-h-[280px] overflow-hidden rounded-[24px] bg-[#ddd] lg:min-h-[520px] lg:w-[42%] lg:shrink-0">
+      {SLIDES.map((slide, index) => (
+        <img key={slide.image} alt="" src={slide.image} className={`absolute inset-0 size-full max-w-none object-cover transition-opacity duration-700 ease-in-out ${slide.imageClass ?? ""} ${index === activeIndex ? "opacity-100" : "opacity-0"}`} />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#4f5e7b]/40 via-transparent to-transparent" />
+      <p className={`absolute bottom-[20px] font-['Rubik',sans-serif] text-[18px] font-bold text-white md:text-[22px] ${captionSide}`}>{t(activeSlide.photoKey)}</p>
+      <div className={`absolute bottom-[20px] flex gap-[6px] ${layout.dir === "rtl" ? "left-[20px]" : "right-[20px]"}`}>
+        {SLIDES.map((slide, index) => (
+          <button key={slide.image} type="button" aria-label={`Slide ${index + 1}`} onClick={() => setActiveIndex(index)} className={`size-[8px] rounded-full border-0 p-0 transition-colors ${index === activeIndex ? "bg-white" : "bg-white/50"}`} />
+        ))}
+      </div>
     </div>
   );
 }
 
-function Metrica2() {
+function MetricBarChart({ label }: { label: string }) {
+  const bars = [12, 18, 26, 36];
   return (
-    <div className="h-auto md:min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px relative rounded-[30px] w-full" data-name="metrica" style={{ backgroundImage: METRIC_CARD_GRADIENT }}>
-      <div className="overflow-clip rounded-[inherit] h-auto md:h-full w-full">
-        <div className="content-stretch flex flex-col items-start gap-[20px] md:justify-between p-[30px] relative h-auto md:h-full w-full">
-          <Frame12 />
-          <Frame13 />
+    <div className="flex flex-col items-center gap-[10px]">
+      <div className="flex h-[40px] items-end justify-center gap-[5px]" aria-hidden="true">
+        {bars.map((h, i) => (
+          <div key={i} className="w-[9px] rounded-t-[3px] bg-[#5980cc]" style={{ height: h, opacity: 0.35 + i * 0.2 }} />
+        ))}
+      </div>
+      <p className="text-center font-['Rubik',sans-serif] text-[18px] font-semibold leading-tight text-[#5980cc] md:text-[20px]">{label}</p>
+    </div>
+  );
+}
+
+function FeaturedCard() {
+  const { t } = useTranslation();
+  const layout = useLayout();
+  return (
+    <div className="overflow-hidden rounded-[24px] bg-white shadow-[2px_4px_12px_0px_rgba(168,168,168,0.12)]">
+      <div className="flex flex-col md:flex-row">
+        <div className="relative h-[160px] shrink-0 overflow-hidden bg-[#ddd] md:h-auto md:w-[200px]">
+          <img alt="" className="absolute inset-0 size-full object-cover object-[center_35%]" src={imgFeaturedCard} />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#4f5e7b]/50 to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#4f5e7b]/20" />
+        </div>
+        <div className={`flex min-w-0 flex-1 flex-col justify-center gap-[12px] p-[20px] ${layout.textAlign}`}>
+          <Badge>{t("workflow.photo3")}</Badge>
+          <h4 className="font-['Rubik',sans-serif] text-[18px] font-semibold leading-snug text-[#4f5e7b] md:text-[20px]">{t("workflow.metric3.title")}</h4>
+          <p className="font-['Rubik',sans-serif] text-[13px] font-normal leading-[20px] text-[#7c96c7] md:text-[14px]">{t("workflow.metric3.desc")}</p>
+          <div className="flex items-center gap-[10px] pt-[4px]">
+            <div className="flex -space-x-[8px]">
+              {[imgAvatar1, imgAvatar2, imgAvatar3].map((src) => (
+                <img key={src} alt="" className="size-[32px] rounded-full border-2 border-white object-cover" src={src} />
+              ))}
+            </div>
+            <p className="font-['Rubik',sans-serif] text-[12px] font-medium text-[#7c96c7] md:text-[13px]">{t("integrations.users")}</p>
+          </div>
+        </div>
+        <div className="flex shrink-0 items-center justify-center border-t border-[#eef2f8] px-[20px] py-[20px] md:min-w-[88px] md:border-t-0 md:border-l md:px-[16px] md:py-0">
+          <MetricBarChart label={t("workflow.metric3.stat")} />
         </div>
       </div>
-      <div aria-hidden="true" className="absolute border-2 border-solid border-[#eef2f8] inset-0 pointer-events-none rounded-[30px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)]" />
-    </div>
-  );
-}
-
-function Frame14() {
-  const { t } = useTranslation();
-  return (
-    <div className="h-auto min-h-[250px] md:flex-[1_0_0] md:h-full md:min-h-px md:min-w-px overflow-clip relative rounded-[30px] w-full text-center">
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[30px]">
-        <div className="absolute bg-[#ddd] inset-0 rounded-[30px]" />
-        <div className="absolute inset-0 overflow-hidden rounded-[30px]">
-          <img alt="" className="absolute h-full left-[-1.46%] max-w-none top-0 w-[102.91%]" src={imgFrame1171275780} />
-        </div>
-      </div>
-      <p className="absolute font-['Rubik',sans-serif] font-bold leading-[normal] text-[18px] md:text-[24px] text-right text-white bottom-[20px] right-[20px] md:right-[30px] md:-translate-x-full w-[150px] md:w-[160px] whitespace-pre-wrap" dir="rtl">{t("workflow.photo3")}</p>
-    </div>
-  );
-}
-
-function Frame6() {
-  return (
-    <div className="content-stretch flex flex-col md:flex-row gap-[10px] items-start h-auto md:flex-[1_0_0] md:min-h-px md:min-w-px relative w-full">
-      <Frame3 />
-      <Metrica2 />
-      <Frame14 />
-    </div>
-  );
-}
-
-function Frame7() {
-  return (
-    <div className="content-stretch flex flex-col gap-[10px] h-auto md:h-[606px] items-center justify-center relative shrink-0 w-full">
-      <Frame5 />
-      <Frame6 />
     </div>
   );
 }
 
 export default function WorkflowMetrics() {
+  const { t } = useTranslation();
+  const layout = useLayout();
   return (
-    <div className="bg-white content-stretch flex flex-col gap-[50px] md:gap-[100px] items-start px-[50px] py-[100px] relative size-full" data-name="Workflow + metrics">
-      <Frame />
-      <Frame7 />
+    <div className="bg-white content-stretch flex flex-col gap-[40px] md:gap-[50px] items-start px-[20px] md:px-[50px] py-[50px] md:py-[100px] relative size-full" data-name="Workflow + metrics" dir={layout.dir}>
+      <div className="grid w-full grid-cols-1 gap-[14px] sm:grid-cols-3 md:gap-[20px]">
+        {STATS.map((item) => (
+          <StatItem key={item.statKey} {...item} />
+        ))}
+      </div>
+
+      <div className="w-full rounded-[30px] bg-[#f2f5fa] p-[20px] md:p-[30px]">
+        <div className="flex flex-col gap-[24px] lg:flex-row lg:gap-[30px]">
+          <WorkflowSlideshow />
+
+          <div className={`flex flex-1 flex-col gap-[20px] md:gap-[24px] min-w-0 ${layout.textAlign}`}>
+            <Badge>{t("workflow.badge")}</Badge>
+            <div className="flex flex-col gap-[12px]">
+              <h2 className="font-['Rubik',sans-serif] text-[26px] font-semibold leading-[1.15] text-[#4f5e7b] md:text-[36px]">{t("workflow.title")}</h2>
+              <p className="font-['Rubik',sans-serif] text-[14px] font-normal leading-normal text-[#7c96c7] md:text-[16px]">{t("workflow.subtitle")}</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-2">
+              <StepCard icon={STEP_ICONS[0]} titleKey="workflow.metric1.title" descKey="workflow.metric1.desc" />
+              <StepCard icon={STEP_ICONS[1]} titleKey="workflow.metric2.title" descKey="workflow.metric2.desc" />
+            </div>
+
+            <FeaturedCard />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

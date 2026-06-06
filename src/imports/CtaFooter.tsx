@@ -13,7 +13,7 @@ function Frame22() {
   return (
       <div className="content-stretch flex flex-col gap-[15px] items-center leading-[normal] relative shrink-0 text-[#4f5e7b] text-center whitespace-pre-wrap px-[20px]">
       <p className={`font-['Rubik',sans-serif] font-semibold relative shrink-0 text-[28px] md:text-[48px] w-full ${layout.cta.titleWidth} text-white text-center`}>{t("cta.title")}</p>
-      <p className="font-['Rubik',sans-serif] font-medium relative shrink-0 text-[14px] md:text-[18px] w-full md:w-[648px] text-white text-center">{t("cta.subtitle")}</p>
+      <p className="font-['Rubik',sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full md:w-[648px] text-white text-center">{t("cta.subtitle")}</p>
     </div>
   );
 }
@@ -139,7 +139,7 @@ function Frame3() {
   return (
     <div className={`content-stretch flex flex-col gap-[20px] relative shrink-0 ${"logoColumnItems" in layout.footer ? layout.footer.logoColumnItems : layout.itemsAlign}`}>
       <Frame />
-      <p className={`font-['Rubik',sans-serif] font-medium leading-[25px] relative shrink-0 text-[#4f5e7b] text-[16px] whitespace-pre-wrap ${layout.textAlign} ${layout.footer.descWidth}`}>{t("footer.description")}</p>
+      <p className={`font-['Rubik',sans-serif] font-normal leading-[25px] relative shrink-0 text-[#4f5e7b] text-[16px] whitespace-pre-wrap ${layout.textAlign} ${layout.footer.descWidth}`}>{t("footer.description")}</p>
     </div>
   );
 }

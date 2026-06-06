@@ -63,7 +63,7 @@ function TextFeatureCard({ badge, title, desc, className = "" }: { badge: string
       </div>
       <div className={`flex w-full flex-col gap-[12px] ${layout.textAlign}`}>
         <p className="font-['Rubik',sans-serif] text-[24px] font-semibold leading-normal text-[#4f5e7b]">{title}</p>
-        <p className="font-['Rubik',sans-serif] text-[16px] font-medium leading-normal text-[#7c96c7] whitespace-pre-wrap">{desc}</p>
+        <p className="font-['Rubik',sans-serif] text-[16px] font-normal leading-normal text-[#7c96c7] whitespace-pre-wrap">{desc}</p>
       </div>
       </div>
     </div>
@@ -106,27 +106,40 @@ function ToothFeatureCard({ title, subtitle, className = "" }: { title: string; 
   );
 }
 
+function ChatBubble({ text, inline = false }: { text: string; inline?: boolean }) {
+  const layout = useLayout();
+  const isRtl = layout.dir === "rtl";
+  const bubble = (
+    <div className={cn("relative max-w-[88%] bg-white px-[14px] py-[10px] shadow-[0px_2px_8px_rgba(63,96,180,0.14)]", isRtl ? "rounded-[18px] rounded-bl-[5px]" : "rounded-[18px] rounded-br-[5px]")}>
+      <p className={cn("font-['Rubik',sans-serif] text-[16px] font-medium leading-[1.35] text-[#5f80c9]", layout.textAlign)}>{text}</p>
+    </div>
+  );
+  if (inline) return bubble;
+  return (
+    <div className={cn("flex w-full shrink-0", isRtl ? "justify-start" : "justify-end")}>
+      {bubble}
+    </div>
+  );
+}
+
 function ChatCard({ questions, className = "" }: { questions: string[]; className?: string }) {
+  const layout = useLayout();
   const lastQuestion = questions[questions.length - 1];
   const otherQuestions = questions.slice(0, -1);
 
   return (
-    <div className={cn("flex min-h-[400px] w-full shrink-0 flex-col items-end justify-between overflow-clip rounded-[30px] p-[25px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)] md:w-[398px] md:min-h-0 md:self-stretch", BENTO_CARD_HOVER, className)} style={{ backgroundImage: CARD_BLUE_GRADIENT }}>
+    <div className={cn("flex min-h-[400px] w-full shrink-0 flex-col overflow-clip rounded-[30px] p-[25px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)] md:w-[398px] md:min-h-0 md:self-stretch", BENTO_CARD_HOVER, className)} style={{ backgroundImage: CARD_BLUE_GRADIENT }}>
       <BentoCardHoverOverlay className="bg-white/10" />
-      <div className="relative z-10 flex w-full flex-col items-end justify-between gap-0 min-h-full flex-1">
-      {otherQuestions.map((q, i) => (
-        <div key={i} className="flex shrink-0 items-center justify-center overflow-clip rounded-[35px] bg-white px-[14px] py-[10px]">
-          <p className="font-['Rubik',sans-serif] text-[16px] font-medium leading-normal text-[#5f80c9] text-right">{q}</p>
+      <div className="relative z-10 flex min-h-full w-full flex-1 flex-col">
+        <div className="flex min-h-0 flex-1 flex-col justify-end gap-[8px] overflow-hidden pb-[12px]">
+          {otherQuestions.map((q, i) => (
+            <ChatBubble key={i} text={q} />
+          ))}
         </div>
-      ))}
-      <div className="flex h-[40px] w-full shrink-0 items-stretch justify-between">
-        <ArrowButton className="size-auto h-full aspect-square w-auto min-w-0 max-w-none" />
-        {lastQuestion ? (
-          <div className="flex h-[40px] shrink-0 items-center justify-center overflow-clip rounded-[35px] bg-white px-[14px] py-[10px]">
-            <p className="font-['Rubik',sans-serif] text-[16px] font-medium leading-normal text-[#5f80c9] text-right">{lastQuestion}</p>
-          </div>
-        ) : null}
-      </div>
+        <div className={cn("flex w-full shrink-0 items-end gap-[10px]", layout.dir === "rtl" ? "flex-row-reverse justify-between" : "justify-between")}>
+          <ArrowButton className="size-auto h-[40px] aspect-square w-auto min-w-0 max-w-none shrink-0" />
+          {lastQuestion ? <ChatBubble text={lastQuestion} inline /> : null}
+        </div>
       </div>
     </div>
   );

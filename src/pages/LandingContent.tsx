@@ -4,8 +4,9 @@ import ValueForBusiness from "@/app/components/ValueForBusiness";
 import { showKeyAdvantagesSection, showTroubleshootingSection } from "@/app/landingConfig";
 import Troubleshooting from "@/imports/Troubleshooting";
 import WorkflowMetrics from "@/imports/WorkflowMetrics";
-import IntegrationsWhyUs from "@/imports/IntegrationsWhyUs";
+import FAQSection from "@/app/components/FAQSection";
 import CtaFooter from "@/imports/CtaFooter";
+import { ContactSection } from "@/app/components/ContactSection";
 import { ScaledContainer } from "@/app/components/ScaledContainer";
 
 /** Shared landing content — sections and layout. Each language page can customize or replace. */
@@ -18,7 +19,8 @@ export function LandingContent() {
         <ValueForBusiness />
         {showTroubleshootingSection ? <Troubleshooting /> : null}
         <WorkflowMetrics />
-        <IntegrationsWhyUs />
+        <FAQSection />
+        <ContactSection />
         <CtaFooter />
       </div>
     </ScaledContainer>

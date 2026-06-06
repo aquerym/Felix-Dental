@@ -5,10 +5,10 @@ import imgGeminiGeneratedImageFpr3Mefpr3Mefpr31 from "../assets/5cc2a148e9f39c9d
 import imgGeminiGeneratedImageFc1U3Zfc1U3Zfc1U1 from "../assets/cbdb00c770b46e42e75e334c20a14545fa7908e6.png";
 import imgGeminiGeneratedImageSurkugsurkugsurk1 from "../assets/27ba8f1c375ccf036aef1d1a746ee8fc97c4855d.png";
 import imgGeminiGeneratedImageWw2Iptww2Iptww2I1 from "../assets/7893bbb2e8f47d27e53790bb8ec39bb45cb93b23.png";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useLayout } from "@/layouts";
-import { ContactPopup } from "@/app/components/ContactPopup";
+import { scrollToContact } from "@/app/lib/scrollToContact";
 
 function Frame1() {
   const { t } = useTranslation();
@@ -532,12 +532,9 @@ function Frame29({ onOpenPopup }: FrameProps) {
 }
 
 export default function KeyAdvantages() {
-  const [isContactPopupOpen, setContactPopupOpen] = useState(false);
-
   return (
     <div id="key-advantages" className="bg-[rgb(230,239,255)] content-stretch flex flex-col gap-[15px] items-center justify-center md:justify-start px-[20px] md:px-[50px] py-[50px] md:py-[100px] relative size-full min-h-screen md:min-h-0 scroll-mt-[120px]" data-name="Key Advantages">
-      <Frame29 onOpenPopup={() => setContactPopupOpen(true)} />
-      <ContactPopup isOpen={isContactPopupOpen} onClose={() => setContactPopupOpen(false)} />
+      <Frame29 onOpenPopup={scrollToContact} />
     </div>
   );
 }

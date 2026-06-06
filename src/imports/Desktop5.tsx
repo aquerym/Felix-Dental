@@ -20,7 +20,7 @@ const SECTION_IDS = {
   about: "key-advantages",
   useCases: "use-cases",
   pricing: "pricing",
-  integrations: "integrations",
+  integrations: "contact",
 } as const;
 
 function scrollToSection(sectionId: string) {
@@ -224,7 +224,7 @@ function Frame11() {
   return (
     <div className={`content-stretch flex flex-col font-['Rubik',sans-serif] font-medium ${layout.hero.heroTextGap} leading-[normal] relative shrink-0 text-white w-full px-[20px] md:px-0 justify-center ${layout.hero.itemsAlign} ${layout.hero.containerWidth}`}>
       <p className={`${layout.hero.titleWidth ?? "min-w-full"} relative shrink-0 text-[40px] md:text-[64px] w-[min-content] whitespace-pre-wrap font-[Rubik] text-right`}>{t("hero.title")}</p>
-      <p className={`max-w-full relative shrink-0 text-[15px] md:text-[18px] font-[Rubik] font-medium text-right ${layout.hero.subtitleMaxW}`}>{t("hero.subtitle")}</p>
+      <p className={`max-w-full relative shrink-0 text-[15px] md:text-[18px] font-[Rubik] font-normal text-right ${layout.hero.subtitleMaxW}`}>{t("hero.subtitle")}</p>
     </div>
   );
 }

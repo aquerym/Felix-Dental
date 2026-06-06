@@ -235,7 +235,7 @@ function ValueCard({ numKey, titleKey, descKey, visual }: { numKey: string; titl
       <div className={cn("relative z-10 flex flex-col gap-[12px] p-[24px] md:p-[32px]", layout.textAlign)} dir={layout.dir}>
         <span className={cn("font-['Rubik',sans-serif] text-[16px] font-medium text-[#7c96c7] transition-colors", VALUE_EASE, "group-hover:text-[#5980cc]")}>{t(numKey)}</span>
         <h3 className={cn("font-['Rubik',sans-serif] text-[20px] font-semibold leading-normal text-[#4f5e7b] transition-colors md:text-[24px]", VALUE_EASE, "group-hover:text-[#3e5f9a]")}>{t(titleKey)}</h3>
-        <p className="font-['Rubik',sans-serif] text-[16px] font-medium leading-[22px] text-[#7c96c7]">{t(descKey)}</p>
+        <p className="font-['Rubik',sans-serif] text-[16px] font-normal leading-[22px] text-[#7c96c7]">{t(descKey)}</p>
       </div>
     </article>
   );

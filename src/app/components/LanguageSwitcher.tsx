@@ -97,7 +97,7 @@ export function LanguageSwitcher() {
           <div className="overflow-clip rounded-full relative shrink-0 size-[25px]">
             <selectedLanguage.flag />
           </div>
-          <p className={`${getFontClass(selectedLanguage.code)} font-medium leading-[normal] relative shrink-0 text-[rgb(87,115,255)] text-[16px]`}>
+          <p className={`${getFontClass(selectedLanguage.code)} font-semibold leading-[normal] relative shrink-0 text-[rgb(87,115,255)] text-[16px]`}>
             {selectedLanguage.name}
           </p>
         </div>
@@ -122,7 +122,7 @@ export function LanguageSwitcher() {
               <div className="overflow-clip rounded-full relative shrink-0 size-[25px]">
                 <language.flag />
               </div>
-              <p className={`${getFontClass(language.code)} font-medium leading-[normal] text-[rgb(87,115,255)] text-[16px]`}>
+              <p className={`${getFontClass(language.code)} font-semibold leading-[normal] text-[rgb(87,115,255)] text-[16px]`}>
                 {language.name}
               </p>
             </button>
