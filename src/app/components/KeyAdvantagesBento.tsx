@@ -106,39 +106,34 @@ function ToothFeatureCard({ title, subtitle, className = "" }: { title: string; 
   );
 }
 
-function ChatBubble({ text, inline = false }: { text: string; inline?: boolean }) {
+function ChatBubble({ text, align = "end" }: { text: string; align?: "start" | "end" }) {
   const layout = useLayout();
   const isRtl = layout.dir === "rtl";
-  const bubble = (
-    <div className={cn("relative max-w-[88%] bg-white px-[14px] py-[10px] shadow-[0px_2px_8px_rgba(63,96,180,0.14)]", isRtl ? "rounded-[18px] rounded-bl-[5px]" : "rounded-[18px] rounded-br-[5px]")}>
-      <p className={cn("font-['Rubik',sans-serif] text-[16px] font-medium leading-[1.35] text-[#5f80c9]", layout.textAlign)}>{text}</p>
-    </div>
-  );
-  if (inline) return bubble;
+  const isStart = align === "start";
+  const tailOnLeft = isStart !== isRtl;
   return (
-    <div className={cn("flex w-full shrink-0", isRtl ? "justify-start" : "justify-end")}>
-      {bubble}
+    <div className={cn("flex w-full shrink-0", isStart ? "justify-start" : "justify-end")}>
+      <div className={cn("relative max-w-[88%] bg-white px-[14px] py-[10px] shadow-[0px_2px_8px_rgba(63,96,180,0.14)] rounded-[18px]", tailOnLeft ? "rounded-bl-[5px]" : "rounded-br-[5px]")}>
+        <p className={cn("font-['Rubik',sans-serif] text-[16px] font-medium leading-[1.35] text-[#5f80c9]", layout.textAlign)}>{text}</p>
+      </div>
     </div>
   );
 }
 
 function ChatCard({ questions, className = "" }: { questions: string[]; className?: string }) {
   const layout = useLayout();
-  const lastQuestion = questions[questions.length - 1];
-  const otherQuestions = questions.slice(0, -1);
 
   return (
     <div className={cn("flex min-h-[400px] w-full shrink-0 flex-col overflow-clip rounded-[30px] p-[25px] shadow-[2px_4px_5.8px_0px_rgba(168,168,168,0.16)] md:w-[398px] md:min-h-0 md:self-stretch", BENTO_CARD_HOVER, className)} style={{ backgroundImage: CARD_BLUE_GRADIENT }}>
       <BentoCardHoverOverlay className="bg-white/10" />
       <div className="relative z-10 flex min-h-full w-full flex-1 flex-col">
         <div className="flex min-h-0 flex-1 flex-col justify-end gap-[8px] overflow-hidden pb-[12px]">
-          {otherQuestions.map((q, i) => (
-            <ChatBubble key={i} text={q} />
+          {questions.map((q, i) => (
+            <ChatBubble key={i} text={q} align={i % 2 === 0 ? "end" : "start"} />
           ))}
         </div>
-        <div className={cn("flex w-full shrink-0 items-end gap-[10px]", layout.dir === "rtl" ? "flex-row-reverse justify-between" : "justify-between")}>
+        <div className={cn("flex w-full shrink-0 items-end", layout.dir === "rtl" ? "justify-end" : "justify-start")}>
           <ArrowButton className="size-auto h-[40px] aspect-square w-auto min-w-0 max-w-none shrink-0" />
-          {lastQuestion ? <ChatBubble text={lastQuestion} inline /> : null}
         </div>
       </div>
     </div>
